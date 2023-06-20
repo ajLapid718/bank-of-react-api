@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 const startListening = () => {
   const PORT = 5000;
@@ -18,6 +19,10 @@ app.get("/credits", (req, res, next) => {
 app.get("/debits", (req, res, next) => {
   res.status(200).json(12500);
 });
+
+app.use(cors({
+  origin: '*'
+}));
 
 const bootApp = async () => {
   await startListening();
